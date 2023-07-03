@@ -1,0 +1,39 @@
+<?php
+header("Access-Control-Allow-Origin: *");
+
+$conn = mysqli_connect('localhost','root','','book');
+
+if(!$conn){
+    die ("can not connet to the data base"+ mysqli_connect_error());
+}
+
+$sql = "SELECT * FROM sample";
+
+$sample = mysqli_query($conn, $sql);
+
+
+var_dump($data);
+
+$books = [
+  [
+    "author" => "John Doe",
+    "id" => 1,
+    "title" => "Book One", 
+    "description" => "Lorem ipsum dolor sit amet..."  
+  ],
+  [
+    "author" => "Jane Doe",  
+    "id" => 2,
+    "title" => "Book Two",
+    "description" => "Consectetur adipiscing elit..."    
+  ],  
+  [
+   "author" => "Jack Daniels",
+    "id" => 3,
+    "title" => "Book Three",
+    "description" => "Pellentesque volutpat dignissim..."
+  ]
+];
+
+header('Content-Type: application/json');
+echo json_encode($books);
